@@ -17,7 +17,6 @@ const homeScreen = () => {
                         <Appbar />
                         <Showcase />
                         <NewsList />
-
                         <Footer />
 
                   </div>
