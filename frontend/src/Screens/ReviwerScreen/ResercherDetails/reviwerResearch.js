@@ -15,7 +15,7 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listitemsReviewer.js';
+import { mainListItems, secondaryListItems } from '../listitems4';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -197,19 +197,19 @@ export default function Dashboard() {
                             </tr>
                       </thead>
                       <tbody>
-                            {researchers.map((con) => (
-                                  <tr key={con._id} >
-                                        <td>{con.researcherPaper}</td>
-                                        <td>{con.researcherDes}</td>
-                                        <td>{con.researchInsertDoc}</td>
-                                        <td>{con.createdAt}</td>
-                                        <td>{con.updatedAt}</td>
-                                        <td>{con.researchIsApproved ? 
+                            {researchers.map((rev) => (
+                                  <tr key={rev._id} >
+                                        <td>{rev.researcherPaper}</td>
+                                        <td>{rev.researcherDes}</td>
+                                        <td>{rev.researchInsertDoc}</td>
+                                        <td>{rev.createdAt}</td>
+                                        <td>{rev.updatedAt}</td>
+                                        <td>{rev.researchIsApproved ? 
                                           (<i className='fas fa-check' style={{ color:'green' }}> </i>) : (<i className='fas fa-times' style={{ color:'red' }}> </i>)
                                         }
                                         </td>
                                         <td>
-                                            <LinkContainer to={`/reserch/${con._id}`}>
+                                            <LinkContainer to={`/reserch/${rev._id}`}>
                                                 <Button variant='light' className='btn-sm'>
                                                     Details
                                                 </Button>

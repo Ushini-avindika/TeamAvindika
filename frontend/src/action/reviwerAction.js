@@ -57,7 +57,7 @@ export const getAllResearch = () => async (dispatch, getState) => {
                 },
           }
 
-          const { data } = await axios.get('localhost:8040/api/reviewdetails/research', config)
+          const { data } = await axios.get('http://localhost:8040/api/reviewdetails/research', config)
 
           dispatch({
                 type: RESEARCH_LIST_SUCCESS_REVIWER,

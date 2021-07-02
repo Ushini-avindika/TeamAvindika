@@ -19,25 +19,25 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Reviwer Dashboard" />
+      <ListItemText primary="Dashboard" />
     </ListItem>
   </Link>
 
-  <Link to="/reviwer">
+  <Link to="/reviwerWorkshop">
     <ListItem button>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Workshop Detalis" />
+      <ListItemText primary="Workshop Details" />
     </ListItem>
 </Link>
 
-  <Link to="/research">
+  <Link to="/reviwerResearch">
     <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Research paper List" />
+      <ListItemText primary="Researcher Details" />
     </ListItem>
   </Link>
 
@@ -46,18 +46,11 @@ export const mainListItems = (
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reviwers List" />
+      <ListItemText primary="Reviwers" />
     </ListItem>
   </Link>
 
-  <Link to="/">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="" />
-    </ListItem>
-  </Link>
+  
   </div>
 );
 
