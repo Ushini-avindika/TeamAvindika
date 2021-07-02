@@ -100,9 +100,9 @@ const registerScreen = ({ location, history }) => {
                                           <div className="form-group bn">
                                                 <Form.Label>User Type</Form.Label>
                                                 <div>
-                                                      <input type="radio" value="true" name="isReasearcher" onChange={(e) => setisReasearcher(e.target.value)} /> researcher
-                                                      <input type="radio" value="true" name="isWorkPresnter" onChange={(e) => setisWorkPresnter(e.target.value)} /> Workshop Presenter
-                                                      <input type="radio" value="true" name="isAtendee" onChange={(e) => setisAtendee(e.target.value)} /> Atendee
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisReasearcher(e.target.value)} /> researcher
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisWorkPresnter(e.target.value)} /> Workshop Presenter
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisAtendee(e.target.value)} /> Atendee
                                                 </div>
                                           </div>
                                     </Form.Group>
