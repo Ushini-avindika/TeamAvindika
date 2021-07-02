@@ -7,6 +7,10 @@ import Message from '../../../components/Message/message'
 import Loader from '../../../components/Loader/loader'
 import { getConferenceDetailsById, approveConference, declineConference } from '../../../action/adminAction.js'
 import { ADMIN_APPROVED_RESET, ADMIN_DECLINE_RESET } from '../../../constants/adminConstants.js'
+import Badge from 'react-bootstrap/Badge'
+import FromContainer from '../../FormContainer/formContainer.js'
+
+
 
 const ApproveScreen = ({ match }) => {
       const confId = match.params.id
@@ -28,7 +32,7 @@ const ApproveScreen = ({ match }) => {
       useEffect(() => {
 
             if (conferencedetails || successApprove || successDecline) {
-                  dispatch({type:ADMIN_DECLINE_RESET})
+                  dispatch({ type: ADMIN_DECLINE_RESET })
                   dispatch({ type: ADMIN_APPROVED_RESET })
                   dispatch(getConferenceDetailsById(confId))
             }
@@ -49,69 +53,73 @@ const ApproveScreen = ({ match }) => {
             <Message variant='danger'>{error}</Message>
       ) : (
             <>
-             <Link to='/adminCon' className='btn btn-light my-3'>
+                  <Link to='/adminCon' className='btn btn-light my-3'>
                         Go Back
                   </Link>
-                  <h1>Conference {conferencedetails.conname}</h1>
-                  <Row>
-                        <Col md={8}>
-                              <ListGroup variant='flush'>
-                                    <ListGroup.Item>
-                                          <p>
-                                                <strong>Name: </strong> {conferencedetails.conname}
-                                          </p>
 
-                                          <p>
-                                                <strong>Organizer:</strong>
-                                                {conferencedetails.organizer}
-                                          </p>
-                                          <p>
-                                                <strong>Description:</strong>
-                                                {conferencedetails.description}
-                                          </p>
-                                          <p>
-                                                <strong>Start Date:</strong>
-                                                {conferencedetails.startDate}
-                                          </p>
-                                          <p>
-                                                <strong>End Date:</strong>
-                                                {conferencedetails.endDate}
-                                          </p>
-                                          <p>
-                                                <strong>Venue:</strong>
-                                                {conferencedetails.venue}
-                                          </p>
-                                          {conferencedetails.isApproved ? (
-                                                <Message variant='success'>
-                                                      Approved
-                                                </Message>
-                                          ) : (
-                                                <Message variant='danger'>Not Approved</Message>
-                                          )}
-                                    </ListGroup.Item>
+                  <FromContainer>
+                        <Badge variant="dark"><h1>Conference {conferencedetails.conname}</h1></Badge>
 
+                        <Row>
+                              <Col md={8}>
+                                    <ListGroup variant='flush'>
+                                          <ListGroup.Item>
+                                                <p>
+                                                      <strong>Name: </strong> {conferencedetails.conname}
+                                                </p>
 
-                              </ListGroup>
-                              {!conferencedetails.isApproved && (
-                                    <ListGroup.Item>
-                                          <Button type='button' className='btn btn-block' onClick={approveHandler}>
-                                                Mark as Approved
-                                          </Button>
-                                    </ListGroup.Item>
-                              )}
-
-                              {conferencedetails.isApproved && (
-                                    <ListGroup.Item>
-                                          <Button type='button' className='btn btn-block' onClick={declineHandler} >
-                                                Decline
-                                          </Button>
-                                    </ListGroup.Item>
-                              )}
+                                                <p>
+                                                      <strong>Organizer:</strong>
+                                                      {conferencedetails.organizer}
+                                                </p>
+                                                <p>
+                                                      <strong>Description:</strong>
+                                                      {conferencedetails.description}
+                                                </p>
+                                                <p>
+                                                      <strong>Start Date:</strong>
+                                                      {conferencedetails.startDate}
+                                                </p>
+                                                <p>
+                                                      <strong>End Date:</strong>
+                                                      {conferencedetails.endDate}
+                                                </p>
+                                                <p>
+                                                      <strong>Venue:</strong>
+                                                      {conferencedetails.venue}
+                                                </p>
+                                                {conferencedetails.isApproved ? (
+                                                      <Message variant='success'>
+                                                            Approved
+                                                      </Message>
+                                                ) : (
+                                                      <Message variant='danger'>Not Approved</Message>
+                                                )}
+                                          </ListGroup.Item>
 
 
+                                    </ListGroup>
+                                    {!conferencedetails.isApproved && (
+                                          <ListGroup.Item>
+                                                <Button type='button' className='btn btn-block' onClick={approveHandler}>
+                                                      Mark as Approved
+                                                </Button>
+                                          </ListGroup.Item>
+                                    )}
 
-                        </Col>
-                  </Row>
+                                    {conferencedetails.isApproved && (
+                                          <ListGroup.Item>
+                                                <Button type='button' className='btn btn-block' onClick={declineHandler} >
+                                                      Decline
+                                                </Button>
+                                          </ListGroup.Item>
+                                    )}
+
+
+
+                              </Col>
+                        </Row>
+                  </FromContainer>
             </>
       )
 }

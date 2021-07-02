@@ -5,8 +5,10 @@ import { Row, Col, ListGroup, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../../components/Message/message'
 import Loader from '../../../components/Loader/loader'
-import { getNewsById, approveNews} from '../../../action/adminAction.js'
+import { getNewsById, approveNews } from '../../../action/adminAction.js'
 import { ADMIN_APPROVED_NEWS_RESET } from '../../../constants/adminConstants.js'
+import Badge from 'react-bootstrap/Badge'
+import FromContainer from '../../FormContainer/formContainer.js'
 
 const ApproveScreen = ({ match }) => {
       const newsId = match.params.id
@@ -39,52 +41,55 @@ const ApproveScreen = ({ match }) => {
             <Message variant='danger'>{error}</Message>
       ) : (
             <>
-             <Link to='/newsAdmin' className='btn btn-light my-3'>
+                  <Link to='/newsAdmin' className='btn btn-light my-3'>
                         Go Back
                   </Link>
-                  <h1>News {news._id}</h1>
-                  <Row>
-                        <Col md={8}>
-                              <ListGroup variant='flush'>
-                                    <ListGroup.Item>
-                                          <p>
-                                                <strong>Name: </strong> {news.name}
-                                          </p>
+                  <FromContainer>
+                        <Badge variant="dark"> <h1>News {news._id}</h1></Badge>
 
-                                          <p>
-                                                <strong>Date:</strong>
-                                                {news.date}
-                                          </p>
-                                         
-                                          <p>
-                                                <strong>Message:</strong>
-                                                {news.message}
-                                          </p>
-                                         
-                                         
-                                          {news.isApproved ? (
-                                                <Message variant='success'>
-                                                      Approved
-                                                </Message>
-                                          ) : (
-                                                <Message variant='danger'>Not Approved</Message>
-                                          )}
-                                    </ListGroup.Item>
+                        <Row>
+                              <Col md={8}>
+                                    <ListGroup variant='flush'>
+                                          <ListGroup.Item>
+                                                <p>
+                                                      <strong>Name: </strong> {news.name}
+                                                </p>
+
+                                                <p>
+                                                      <strong>Date:</strong>
+                                                      {news.date}
+                                                </p>
+
+                                                <p>
+                                                      <strong>Message:</strong>
+                                                      {news.message}
+                                                </p>
 
 
-                              </ListGroup>
-                              {!news.isApproved && (
-                                    <ListGroup.Item>
-                                          <Button type='button' className='btn btn-block' onClick={approveHandler}>
-                                                Mark as Approved
-                                          </Button>
-                                    </ListGroup.Item>
-                              )}
+                                                {news.isApproved ? (
+                                                      <Message variant='success'>
+                                                            Approved
+                                                      </Message>
+                                                ) : (
+                                                      <Message variant='danger'>Not Approved</Message>
+                                                )}
+                                          </ListGroup.Item>
 
-                            
 
-                        </Col>
-                  </Row>
+                                    </ListGroup>
+                                    {!news.isApproved && (
+                                          <ListGroup.Item>
+                                                <Button type='button' className='btn btn-block' onClick={approveHandler}>
+                                                      Mark as Approved
+                                                </Button>
+                                          </ListGroup.Item>
+                                    )}
+
+
+
+                              </Col>
+                        </Row>
+                  </FromContainer>
             </>
       )
 }
