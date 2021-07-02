@@ -14,68 +14,78 @@ import { Link } from 'react-router-dom'
 
 export const mainListItems = (
   <div>
-    <Link to ="#">
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItem>
-  </Link>
-
-  <Link to="/adminCon">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
+    <Link to="#">
+      <ListItem button>
+        <ListItemIcon>
+          <DashboardIcon />
         </ListItemIcon>
-      <ListItemText primary="Conference Detalis" />
-    </ListItem>
-</Link>
+        <ListItemText primary="Dashboard" />
+      </ListItem>
+    </Link>
 
-  <Link to="/newsAdmin">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="News List" />
-    </ListItem>
-  </Link>
-
-  <Link to="/adminWorkshops">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Workshops" />
-    </ListItem>
-  </Link>
-
-  <Link to="/adminReserch">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reserch List" />
-    </ListItem>
-  </Link>
-
-  <Link to="/adminEditors">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
+    <Link to="/adminCon">
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
         </ListItemIcon>
-      <ListItemText primary="Editors List" />
-    </ListItem>
-  </Link>
+        <ListItemText primary="Conference Detalis" />
+      </ListItem>
+    </Link>
 
-  <Link to="/adminReviwer">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
+    <Link to="/newsAdmin">
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
         </ListItemIcon>
-      <ListItemText primary="Reviwers List" />
-    </ListItem>
-  </Link>
+        <ListItemText primary="News List" />
+      </ListItem>
+    </Link>
+
+    <Link to="/adminWorkshops">
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Workshops" />
+      </ListItem>
+    </Link>
+
+    <Link to="/adminReserch">
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Reserch List" />
+      </ListItem>
+    </Link>
+
+    <Link to="/adminEditors">
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Editors List" />
+      </ListItem>
+    </Link>
+
+    <Link to="/adminReviwer">
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Reviwers List" />
+      </ListItem>
+    </Link>
+
+    <Link to="/">
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="HOME" />
+      </ListItem>
+    </Link>
+
 
   </div>
 );
