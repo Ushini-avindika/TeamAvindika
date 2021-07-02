@@ -29,6 +29,7 @@ import EditorLanding from './Screens/EditorScreen/Editor dashboard/editorLanding
 import WorkshopList from './Screens/ReviwerScreen/WorkshopDetails/reviewerWorkshopDetails.js'
 import ReasearcherDetails from './Screens/ReviwerScreen/ResercherDetails/reviwerResearch.js'
 import WorkshopsApprove from './Screens/ReviwerScreen/WorkshopDetails/WorkshopsApproveScreen.js'
+import ReserchApprove from './Screens/ReviwerScreen/ResercherDetails/researchApproveScreen.js'
 
 const App = () => {
       return (
@@ -64,6 +65,7 @@ const App = () => {
                         <Route path="/editorLanding" component={EditorLanding} />
                         <Route path="/unappNews" component={UnAppNewsScreen} />
                         <Route path="/workshopDetails/:id" component={WorkshopsApprove} />
+                        <Route path="/reserch/:id" component={ReserchApprove} />
                   </div>
             </Router >
       )

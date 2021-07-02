@@ -68,5 +68,24 @@ const declineWorkshopDeatils = asyncHandler(async(req, res) => {
   }
 })
 
+const getReasearchById = asyncHandler(async (req, res) => {
+  const reviwerResDetails = await Researcher.findById(req.params.id)
 
-export{ getAllWorkshopDetails, getAllResearchDetails, updateWorkshopDeatils, getWorkshopById, declineWorkshopDeatils }
+  if (reviwerResDetails) {
+        res.json({
+              _id: reviwerResDetails._id,
+              researcherPaper: reviwerResDetails.researcherPaper,
+              researcherDes: reviwerResDetails.researcherDes,
+              researchInsertDoc: reviwerResDetails.researchInsertDoc,
+              createdAt: reviwerResDetails.createdAt,
+              updatedAt: reviwerResDetails.updatedAt,
+              researchIsApproved: reviwerResDetails.researchIsApproved,          
+        })
+  } else {
+        res.status(404)
+        throw new Error('Researcher details not found')
+  }
+})
+
+
+export{ getAllWorkshopDetails, getAllResearchDetails, updateWorkshopDeatils, getWorkshopById, declineWorkshopDeatils, getReasearchById }

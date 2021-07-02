@@ -1,10 +1,11 @@
 import express from 'express'
 const router = express.Router()
 
-import { getAllWorkshopDetails, getAllResearchDetails, updateWorkshopDeatils, getWorkshopById, declineWorkshopDeatils } from '../controllers/reviewerController.js'
+import { getAllWorkshopDetails, getAllResearchDetails, updateWorkshopDeatils, getWorkshopById, declineWorkshopDeatils, getReasearchById } from '../controllers/reviewerController.js'
 import { protect, reviver } from '../middleware/authMiddleware.js'
 
 router.get('/reviwer/workshop/:id/', protect, reviver, getWorkshopById)
+router.get('/reviwer/researcher/:id/', protect, reviver, getReasearchById)
 router.get('/', protect, reviver, getAllWorkshopDetails)
 router.get('/research', protect, reviver, getAllResearchDetails)
 router.put('/workshop/:id/approved', protect, reviver, updateWorkshopDeatils)

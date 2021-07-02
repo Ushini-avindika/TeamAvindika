@@ -14,7 +14,11 @@ import { WORKSHOP_LIST_REQUEST_REVIWER,
     REVIWER_GETWORKSHOP_BYID_FAIL,
     REVIWER_DECLINE_REQUEST,
     REVIWER_DECLINE_SUCCESS,
-    REVIWER_DECLINE_FAIL
+    REVIWER_DECLINE_FAIL,
+    REVIWER_RESEARCHER_BYID_REQUEST,
+    REVIWER_RESEARCHER_BYID_SUCCESS,
+    REVIWER_RESEARCHER_BYID_FAIL
+
 } from '../constants/reviwerConstants.js'
 
 
@@ -184,4 +188,39 @@ export const declineWorkshopDetails = (workshop) => async (dispatch, getState) =
                               : error.message,
             })
       }
+}
+
+
+export const getResearcherById = (id) => async(dispatch, getState) => {
+      try{
+            dispatch({
+                  type: REVIWER_RESEARCHER_BYID_REQUEST,
+            })
+            const {
+                  userLogin: { userInfo },
+
+            } = getState()
+
+            const config = {
+                      headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${userInfo.token}`,
+                      },
+            }
+            const { data } = await axios.get(`http://localhost:8040/api/reviewdetails/reviwer/researcher/${id}`, config)
+
+            dispatch({
+                  type: REVIWER_RESEARCHER_BYID_SUCCESS,
+                  payload: data
+            })
+      } catch (error) {
+            dispatch({
+                  type: REVIWER_RESEARCHER_BYID_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+
 }

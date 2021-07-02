@@ -187,7 +187,6 @@ export default function Dashboard() {
                 <Table striped bordered hover responsive variant="light" className='table-sm'>
                       <thead>
                             <tr>
-                                  <th>Name</th>
                                   <th>Paper</th>
                                   <th>Description</th>
                                   <th>Docs</th>
