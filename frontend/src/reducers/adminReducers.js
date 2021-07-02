@@ -32,6 +32,10 @@ import {
     ADMIN_APPROVED_NEWS_REQUEST,
     ADMIN_APPROVED_NEWS_SUCCESS,
     ADMIN_APPROVED_NEWS_FAIL,
+    WORKSHOP_LIST_REQUEST_ADMIN,
+    WORKSHOP_LIST_SUCCESS_ADMIN,
+    WORKSHOP_LIST_FAIL_ADMIN,
+    WORKSHOP_LIST_RESET_ADMIN
     
 
  
@@ -173,6 +177,24 @@ export const newsReducer = (state = { news: []  }, action) => {
       }
 }
 
+
+
+
+export const workshopReducer = (state = { workshops: [] }, action) => {
+      switch (action.type) {
+            case WORKSHOP_LIST_REQUEST_ADMIN:
+                  return { loading: true }
+            case WORKSHOP_LIST_SUCCESS_ADMIN:
+                  return { loading: false, workshops: action.payload }
+            case WORKSHOP_LIST_FAIL_ADMIN:
+                  return { loading: false, error: action.payload }
+            case WORKSHOP_LIST_RESET_ADMIN:
+                  return {}
+            default:
+                  return state
+  
+      }
+  }
   
 
 

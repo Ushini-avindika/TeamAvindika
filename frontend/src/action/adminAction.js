@@ -26,7 +26,10 @@ import {
       ADMIN_NEWS_DETAILS_ID_FAIL,
       ADMIN_APPROVED_NEWS_REQUEST,
       ADMIN_APPROVED_NEWS_SUCCESS,
-      ADMIN_APPROVED_NEWS_FAIL
+      ADMIN_APPROVED_NEWS_FAIL,
+      WORKSHOP_LIST_REQUEST_ADMIN,
+      WORKSHOP_LIST_SUCCESS_ADMIN,
+      WORKSHOP_LIST_FAIL_ADMIN
 
       
 } from '../constants/adminConstants.js'
@@ -320,6 +323,40 @@ export const approveNews = (news) => async (dispatch, getState) => {
       } catch (error) {
             dispatch({
                   type: ADMIN_APPROVED_NEWS_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+
+export const AdminWorkshopList = () => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: WORKSHOP_LIST_REQUEST_ADMIN,
+            })
+
+            const {
+                  userLogin: { userInfo },
+            } = getState()
+
+            const config = {
+                  headers: {
+                        Authorization: `Bearer ${userInfo.token}`,
+                  }
+            }
+
+            const { data } = await axios.get('http://localhost:8040/api/reviewdetails/', config)
+
+            dispatch({
+                  type: WORKSHOP_LIST_SUCCESS_ADMIN,
+                  payload: data
+            })
+      } catch (error) {
+            dispatch({
+                  type: WORKSHOP_LIST_FAIL_ADMIN,
                   payload:
                         error.response && error.response.data.message
                               ? error.response.data.message

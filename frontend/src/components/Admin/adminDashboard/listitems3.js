@@ -58,6 +58,17 @@ export const mainListItems = (
       <ListItemText primary="News List" />
     </ListItem>
   </Link>
+
+  <Link to="/adminWorkshops">
+    <ListItem button>
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Workshops" />
+    </ListItem>
+  </Link>
+
   </div>
 );
+
 

@@ -6,8 +6,8 @@ import { protect, reviver } from '../middleware/authMiddleware.js'
 
 router.get('/reviwer/workshop/:id/', protect, reviver, getWorkshopById)
 router.get('/reviwer/researcher/:id/', protect, reviver, getReasearchById)
-router.get('/', protect, reviver, getAllWorkshopDetails)
-router.get('/research', protect, reviver, getAllResearchDetails)
+router.get('/', getAllWorkshopDetails)
+router.get('/research', getAllResearchDetails)
 router.put('/workshop/:id/approved', protect, reviver, updateWorkshopDeatils)
 router.put('/workshop/:id/declined', protect, reviver, declineWorkshopDeatils)
 router.put('/reserch/:id/approved', protect, reviver, updateReserchDeatils)

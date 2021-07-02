@@ -30,6 +30,7 @@ import WorkshopList from './Screens/ReviwerScreen/WorkshopDetails/reviewerWorksh
 import ReasearcherDetails from './Screens/ReviwerScreen/ResercherDetails/reviwerResearch.js'
 import WorkshopsApprove from './Screens/ReviwerScreen/WorkshopDetails/WorkshopsApproveScreen.js'
 import ReserchApprove from './Screens/ReviwerScreen/ResercherDetails/researchApproveScreen.js'
+import AdminWorkshop from './components/Admin/adminWorkshopList/adminWorkshopList.js'
 
 const App = () => {
       return (
@@ -64,6 +65,7 @@ const App = () => {
                         <Route path="/unappNews" component={UnAppNewsScreen} />
                         <Route path="/workshopDetails/:id" component={WorkshopsApprove} />
                         <Route path="/reserch/:id" component={ReserchApprove} />
+                        <Route path="/adminWorkshops" component={AdminWorkshop} />
                   </div>
             </Router >
       )
