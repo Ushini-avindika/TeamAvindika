@@ -191,7 +191,7 @@ export default function Dashboard() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
 
-                    <h1>Admin Dashboard</h1>
+                    <h1>News List</h1>
                     {loading ? (<Loader />) : error ? (
                         <Message variant='danger'>{error}</Message>
                     ) : (
