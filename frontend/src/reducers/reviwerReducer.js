@@ -12,7 +12,10 @@ import { WORKSHOP_LIST_REQUEST_REVIWER,
     REVIWER_GETWORKSHOP_BYID_REQUEST,
     REVIWER_GETWORKSHOP_BYID_SUCCESS,
     REVIWER_GETWORKSHOP_BYID_FAIL,
-    REVIWER_GETWORKSHOP_BYID_RESET
+    REVIWER_GETWORKSHOP_BYID_RESET,
+    REVIWER_DECLINE_REQUEST,
+    REVIWER_DECLINE_SUCCESS,
+    REVIWER_DECLINE_FAIL
     
 } from '../constants/reviwerConstants.js'
 
@@ -75,6 +78,19 @@ export const getAllResearch = (state = { researchers: [] }, action) => {
           case REVIWER_APPROVE_WORKSHOP_SUCCESS:
                 return { loading: false, success: true }
           case REVIWER_APPROVE_WORKSHOP_FAIL:
+                return { loading: false, error: action.payload}
+          default:
+                return state
+      }
+}
+
+export const declineWorkshopReducer = (state = {workshops: {}} , action) => {
+      switch (action.type) {
+          case REVIWER_DECLINE_REQUEST:
+                  return { loading: true }
+          case REVIWER_DECLINE_SUCCESS:
+                return { loading: false, success: true }
+          case REVIWER_DECLINE_FAIL:
                 return { loading: false, error: action.payload}
           default:
                 return state

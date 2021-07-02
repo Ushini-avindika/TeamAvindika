@@ -4,8 +4,8 @@ import { Row, Col, ListGroup, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../../components/Message/message'
 import Loader from '../../../components/Loader/loader'
-import { approveWorkshops, geWorkshopById } from '../../../action/reviwerAction.js'
-import { REVIWER_APPROVE_WORKSHOP_RESET } from '../../../constants/reviwerConstants.js'
+import { approveWorkshops, geWorkshopById, declineWorkshopDetails } from '../../../action/reviwerAction.js'
+import { REVIWER_APPROVE_WORKSHOP_RESET, REVIWER_DECLINE_RESET } from '../../../constants/reviwerConstants.js'
 
 const workshopApproveScreen = ({ match }) => {
       const appId = match.params.id
@@ -19,10 +19,16 @@ const workshopApproveScreen = ({ match }) => {
       workApproved = useSelector((state) => state.workApproved)
       const { loading: loadingApprovel, success: successApprove } = workApproved
 
+      workDecline = useSelector((state) => state.workDecline)
+      const { loading: loadingDecline, success: successDecline } = workDecline
+
+
+
 
       useEffect(() => {
 
-            if (workshops || successApprove ) {
+            if (workshops || successApprove || successDecline) {
+                  dispatch({ type: REVIWER_DECLINE_RESET })
                   dispatch({ type: REVIWER_APPROVE_WORKSHOP_RESET })
                   dispatch(geWorkshopById(appId))
             }
@@ -32,7 +38,11 @@ const workshopApproveScreen = ({ match }) => {
             dispatch(approveWorkshops(workshops))
       }
 
-    
+      const declineHandler = () => {
+            dispatch(declineConference(workshops))
+      }
+
+
 
 
       return loading ? (
@@ -93,6 +103,14 @@ const workshopApproveScreen = ({ match }) => {
                                     <ListGroup.Item>
                                           <Button type='button' className='btn btn-block' onClick={approveHandler}>
                                                 Mark as Approved
+                                          </Button>
+                                    </ListGroup.Item>
+                              )}
+
+                              {workshops.workIsApprove && (
+                                    <ListGroup.Item>
+                                          <Button type='button' className='btn btn-block' onClick={declineHandler} >
+                                                Decline
                                           </Button>
                                     </ListGroup.Item>
                               )}
