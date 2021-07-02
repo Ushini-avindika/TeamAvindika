@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Form, Row, Col } from 'react-bootstrap'
-import './registerscreen.css'
+import '../RegisterScreen/registerscreen.css'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from '../../components/Navbar/navbar.js'
