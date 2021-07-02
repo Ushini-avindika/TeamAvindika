@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { Row, Col, ListGroup, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../../components/Message/message'
@@ -48,6 +49,9 @@ const ApproveScreen = ({ match }) => {
             <Message variant='danger'>{error}</Message>
       ) : (
             <>
+             <Link to='/adminCon' className='btn btn-light my-3'>
+                        Go Back
+                  </Link>
                   <h1>Conference {conferencedetails.conname}</h1>
                   <Row>
                         <Col md={8}>

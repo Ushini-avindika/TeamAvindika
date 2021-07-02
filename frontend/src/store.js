@@ -14,7 +14,7 @@ import { newsListReducer, newsDeleteReducer, newsgetReducer, newsUpadateReducer,
 import { userUpdateProfileReducer } from '../src/reducers/userReducers.js'
 import { conferenceReducer, getEditorReducer, getReviwerReducer, getConferenceDetailsById, conferenceApprovedReducer, conferenceDeclinedReducer, newsReducer, adminNewsReducer, getNewsDetailsById } from '../src/reducers/adminReducers.js'
 import { newsListReducer } from '../src/reducers/newsReducers.js'
-import { getAllWorkshop, getAllResearch, getWorkshopDetailsById, approveWorkshopReducer, declineWorkshopReducer, getResearchDetailsById } from '../src/reducers/reviwerReducer.js'
+import { getAllWorkshop, getAllResearch, getWorkshopDetailsById, approveWorkshopReducer, declineWorkshopReducer, getResearchDetailsById, approveReserchReducer, declineReserchReducer } from '../src/reducers/reviwerReducer.js'
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
@@ -52,7 +52,9 @@ const reducer = combineReducers({
     workDetails:getWorkshopDetailsById,
     workApproved : approveWorkshopReducer,
     workDecline : declineWorkshopReducer,
-    resDetails : getResearchDetailsById
+    resDetails : getResearchDetailsById,
+    resApproved: approveReserchReducer,
+    resDecline: declineReserchReducer
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

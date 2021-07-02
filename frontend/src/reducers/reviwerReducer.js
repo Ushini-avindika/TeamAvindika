@@ -19,7 +19,13 @@ import { WORKSHOP_LIST_REQUEST_REVIWER,
     REVIWER_RESEARCHER_BYID_REQUEST,
     REVIWER_RESEARCHER_BYID_SUCCESS,
     REVIWER_RESEARCHER_BYID_FAIL,
-    REVIWER_RESEARCHER_BYID_RESET
+    REVIWER_RESEARCHER_BYID_RESET,
+    REVIWER_APPROVE_RESERCH_REQUEST,
+    REVIWER_APPROVE_RESERCH_SUCCESS,
+    REVIWER_APPROVE_RESERCH_FAIL,
+    REVIWER_DECLINE_RESERCH_REQUEST,
+    REVIWER_DECLINE_RESERCH_SUCCESS,
+    REVIWER_DECLINE_RESERCH_FAIL
     
 } from '../constants/reviwerConstants.js'
 
@@ -116,5 +122,32 @@ export const getResearchDetailsById = (state = { reserchers:[] }, action)  => {
                   return state
       }
   }
+
+
+  export const approveReserchReducer = (state = {reserchers: {}} , action) => {
+      switch (action.type) {
+          case REVIWER_APPROVE_RESERCH_REQUEST:
+                  return { loading: true }
+          case REVIWER_APPROVE_RESERCH_SUCCESS:
+                return { loading: false, success: true }
+          case REVIWER_APPROVE_RESERCH_FAIL:
+                return { loading: false, error: action.payload}
+          default:
+                return state
+      }
+}
+
+export const declineReserchReducer = (state = {reserchers: {}} , action) => {
+      switch (action.type) {
+          case REVIWER_DECLINE_RESERCH_REQUEST:
+                  return { loading: true }
+          case REVIWER_DECLINE_RESERCH_SUCCESS:
+                return { loading: false, success: true }
+          case REVIWER_DECLINE_RESERCH_FAIL:
+                return { loading: false, error: action.payload}
+          default:
+                return state
+      }
+}
 
 

@@ -17,7 +17,13 @@ import { WORKSHOP_LIST_REQUEST_REVIWER,
     REVIWER_DECLINE_FAIL,
     REVIWER_RESEARCHER_BYID_REQUEST,
     REVIWER_RESEARCHER_BYID_SUCCESS,
-    REVIWER_RESEARCHER_BYID_FAIL
+    REVIWER_RESEARCHER_BYID_FAIL,
+    REVIWER_APPROVE_RESERCH_REQUEST,
+    REVIWER_APPROVE_RESERCH_SUCCESS,
+    REVIWER_APPROVE_RESERCH_FAIL,
+    REVIWER_DECLINE_RESERCH_REQUEST,
+    REVIWER_DECLINE_RESERCH_SUCCESS,
+    REVIWER_DECLINE_RESERCH_FAIL
 
 } from '../constants/reviwerConstants.js'
 
@@ -223,4 +229,72 @@ export const getResearcherById = (id) => async(dispatch, getState) => {
             })
       }
 
+}
+
+
+export const approveReserach = (reserch) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: REVIWER_APPROVE_RESERCH_REQUEST,
+            })
+
+            const {
+                  userLogin: { userInfo },
+            } = getState()
+
+            const config = {
+                  headers: {
+                        Authorization: `Bearer ${userInfo.token}`,
+                  },
+            }
+
+            const { data } = await axios.put(`http://localhost:8040/api/reviewdetails/reserch/${reserch._id}/approved`, reserch, config)
+
+            dispatch({
+                  type: REVIWER_APPROVE_RESERCH_SUCCESS,
+                  payload: data,
+            })
+      } catch (error) {
+            dispatch({
+                  type: REVIWER_APPROVE_RESERCH_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+
+export const declineReserch = (reserch) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: REVIWER_DECLINE_RESERCH_REQUEST,
+            })
+
+            const {
+                  userLogin: { userInfo },
+            } = getState()
+
+            const config = {
+                  headers: {
+                        Authorization: `Bearer ${userInfo.token}`,
+                  },
+            }
+
+            const { data } = await axios.put(`http://localhost:8040/api/reviewdetails/reserch/${reserch._id}/declined`, reserch, config)
+
+            dispatch({
+                  type: REVIWER_DECLINE_RESERCH_SUCCESS,
+                  payload: data,
+            })
+      } catch (error) {
+            dispatch({
+                  type: REVIWER_DECLINE_RESERCH_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
 }
