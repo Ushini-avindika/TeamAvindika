@@ -109,5 +109,20 @@ const approveNewsDeatils = asyncHandler(async(req, res) => {
     }
 })
 
+const declineNews = asyncHandler(async(req, res) => {
+    const news = await News.findById(req.params.id)
 
-export { updateConferenceDeatils, getEditorList, getReviwerList, getConDetailsById, declineConferenceDeatils, getAdminNewsById, approveNewsDeatils }
+    if(news) {
+        news.isApproved = false
+        const declineApprovel = await news.save()
+
+        res.json(declineApprovel)
+    }else {
+        res.status(404)
+        throw new Error('Conference not found')
+    }
+})
+
+
+
+export { updateConferenceDeatils, getEditorList, getReviwerList, getConDetailsById, declineConferenceDeatils, getAdminNewsById, approveNewsDeatils, declineNews }
