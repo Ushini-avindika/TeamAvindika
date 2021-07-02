@@ -9,6 +9,7 @@ import Badge from 'react-bootstrap/Badge'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Card from 'react-bootstrap/Card'
 import FromContainer from '../../components/FormContainer/formContainer.js'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 export const newsList = () => {
       const dispatch = useDispatch()
@@ -27,36 +28,37 @@ export const newsList = () => {
 
       return (
             <>
-                  <FromContainer>
+                  <Jumbotron>
+                        <FromContainer>
 
-                        {loading ? (<Loader />) : error ? (
-                              <Message variant='danger'>{error}</Message>
-                        ) : (
+                              {loading ? (<Loader />) : error ? (
+                                    <Message variant='danger'>{error}</Message>
+                              ) : (
 
-                              <Card className="text-center" >
+                                    <Card className="text-center" >
 
-                                    <Badge variant="dark"><h3 >CONFERENCE NEWS</h3></Badge>
-                                    {news.map((newA) => (
-                                          <tr key={newA._id} >
-                                                <Card.Title >{newA.name}</Card.Title>
-                                                <Card.Body>
-                                                      <Card.Text>
-                                                            {newA.date}
-                                                      </Card.Text>
-                                                      <Link to={`/view/${newA._id}`}>
-                                                            <Button variant="secondary">View News</Button>
-                                                      </Link>
-                                                </Card.Body>
+                                          <Badge variant="dark"><h3 >CONFERENCE NEWS</h3></Badge>
+                                          {news.map((newA) => (
+                                                <tr key={newA._id} >
+                                                      <Card.Title >{newA.name}</Card.Title>
+                                                      <Card.Body>
+                                                            <Card.Text>
+                                                                  {newA.date}
+                                                            </Card.Text>
+                                                            <Link to={`/view/${newA._id}`}>
+                                                                  <Button variant="secondary">View News</Button>
+                                                            </Link>
+                                                      </Card.Body>
 
 
-                                          </tr>
-                                    ))}
+                                                </tr>
+                                          ))}
 
-                              </Card>
-                        )
-                        }
-                  </FromContainer>
-
+                                    </Card>
+                              )
+                              }
+                        </FromContainer>
+                  </Jumbotron>
             </>
       )
 }

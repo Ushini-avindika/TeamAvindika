@@ -10,6 +10,7 @@ import Appbar from '../../components/Navbar/navbar.js'
 import Footer from '../../components/Footer/footer.js'
 import Card from 'react-bootstrap/Card'
 import Badge from 'react-bootstrap/Badge'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const ViewNewsScreen = ({ match, history }) => {
       const nId = match.params.id
@@ -37,28 +38,31 @@ const ViewNewsScreen = ({ match, history }) => {
             <>
                   <Appbar />
 
-                  <Link to='/' className='btn btn-light my-3'>
-                        Go Back
-                  </Link>
+                  <Jumbotron>
 
-                  {loading ? (
-                        <Loader />
-                  ) : error ? (
-                        <Message variant='danger'>{error}</Message>
-                  ) : (
-                        <FromContainer>
-                              <Card className="text-center">
-                                    <Badge variant="dark"><h3>{name}</h3></Badge>
-                                    <Card.Body>
-                                          <Card.Title>Message</Card.Title>
-                                          <Card.Text>
-                                                {message}
-                                          </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer className="text-muted">{date}</Card.Footer>
-                              </Card>
-                        </FromContainer>
-                  )}
+                        <Link to='/' className='btn btn-light my-3'>
+                              Go Back
+                        </Link>
+
+                        {loading ? (
+                              <Loader />
+                        ) : error ? (
+                              <Message variant='danger'>{error}</Message>
+                        ) : (
+                              <FromContainer>
+                                    <Card className="text-center">
+                                          <Badge variant="dark"><h3>{name}</h3></Badge>
+                                          <Card.Body>
+                                                <Card.Title>Message</Card.Title>
+                                                <Card.Text>
+                                                      {message}
+                                                </Card.Text>
+                                          </Card.Body>
+                                          <Card.Footer className="text-muted">{date}</Card.Footer>
+                                    </Card>
+                              </FromContainer>
+                        )}
+                  </Jumbotron>
 
                   <Footer />
 
