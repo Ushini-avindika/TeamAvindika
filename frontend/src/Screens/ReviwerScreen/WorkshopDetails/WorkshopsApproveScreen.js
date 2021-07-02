@@ -33,14 +33,14 @@ const workshopApproveScreen = ({ match }) => {
                   dispatch({ type: REVIWER_APPROVE_WORKSHOP_RESET })
                   dispatch(geWorkshopById(appId))
             }
-      }, [dispatch, successApprove])
+      }, [dispatch, successApprove, successDecline])
 
       const approveHandler = () => {
             dispatch(approveWorkshops(workshops))
       }
 
       const declineHandler = () => {
-            dispatch(declineConference(workshops))
+            dispatch(declineWorkshopDetails(workshops))
       }
 
 
