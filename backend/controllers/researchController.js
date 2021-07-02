@@ -29,6 +29,11 @@ const insertResearcher = asyncHandler(async (req, res) => {
 
 })
 
+const getAprrovedResearch = asyncHandler(async (req, res) => {
+  const resApp = await Researcher.find({
+    researchIsApproved: true,
+  })
+  res.json(resApp)
+})
 
-
-export { insertResearcher }
+export { insertResearcher, getAprrovedResearch }
