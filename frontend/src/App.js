@@ -53,8 +53,6 @@ const App = () => {
                         <Route path="/newslist" component={newsListScreen} />
                         <Route path='/news/:id' component={NewsEditScreen} />
                         <Route path="/conference" component={conferenceDetails} />
-                        <Route path="/newsAdmin" component={AdminNewsDetails} />
-                        <Route path="/newsAdmin" component={AdminNewsDetails} />
                         <Route path="/profile" component={profileScreen} />
                         <Route path="/newsAdmin" component={AdminNewsDetails} />
                         <Route path="/adminNews/:id" component={AdminNewsApprove} />
