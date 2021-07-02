@@ -33,6 +33,8 @@ import ReserchApprove from './Screens/ReviwerScreen/ResercherDetails/researchApp
 import AdminWorkshop from './components/Admin/adminWorkshopList/adminWorkshopList.js'
 import AdminReserch from './components/Admin/adminResercher/adminResercherList.js'
 import atendeeScreen from './Screens/atendeeScreen/atendeeScreen.js'
+import workshopRetriveScreen from './Screens/WorkshopRetriveScreen/workShopRetirveScreen.js'
+import researchRetriveScreen from './Screens/ResearchRetriveScreen.js/reasearcherRetriveScreen'
 
 const App = () => {
       return (
@@ -70,6 +72,8 @@ const App = () => {
                         <Route path="/adminWorkshops" component={AdminWorkshop} />
                         <Route path="/adminReserch" component={AdminReserch} />
                         <Route path="/atendee" component={atendeeScreen} />
+                        <Route path="/workApp" component={workshopRetriveScreen} />
+                        <Route path="/researchApp" component={researchRetriveScreen} />
                   </div>
             </Router >
       )

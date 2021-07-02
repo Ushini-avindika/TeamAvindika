@@ -41,6 +41,13 @@ const insertPresenter = asyncHandler(async (req, res) => {
 
 })
 
+const getAprrovedWorkshops = asyncHandler(async (req, res) => {
+  const workshop = await Presenter.find({
+    workIsApprove: true,
+  })
+  res.json(workshop)
+})
 
 
-export { insertPresenter }
+
+export { insertPresenter, getAprrovedWorkshops }

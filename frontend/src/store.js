@@ -6,8 +6,8 @@ import { conDetailsDeleteReducer, conListReducer, conUnApprovedReduceer, conDeta
 import { conApprovedReduceer } from '../src/reducers/conferenceReducer.js'
 import { conferenceReducer, getEditorReducer } from '../src/reducers/adminReducers.js'
 import { userRegisterReducer, userDetailsReducer } from '../src/reducers/userReducers.js'
-import { researcherInsert } from './reducers/researcherReducer.js'
-import { workshopInsert } from './reducers/workshopReducer.js'
+import { researcherInsert, researchAppListReducer } from './reducers/researcherReducer.js'
+import { workshopInsert, workshopAppListReducer } from './reducers/workshopReducer.js'
 import { conferenceReducer, getEditorReducer, getReviwerReducer, getConferenceDetailsById, conferenceApprovedReducer, conferenceDeclinedReducer } from '../src/reducers/adminReducers.js'
 import { conferenceReducer, getEditorReducer, getReviwerReducer } from '../src/reducers/adminReducers.js'
 import { newsListReducer, newsDeleteReducer, newsgetReducer, newsUpadateReducer, newsCreateReducer, newsApprovedListReducer, newsUnApprovedListReducer } from '../src/reducers/newsReducers.js'
@@ -49,15 +49,17 @@ const reducer = combineReducers({
     listResearchers: getAllResearch,
     appNewList: newsApprovedListReducer,
     unappNewList: newsUnApprovedListReducer,
-    workDetails:getWorkshopDetailsById,
-    workApproved : approveWorkshopReducer,
-    workDecline : declineWorkshopReducer,
-    resDetails : getResearchDetailsById,
+    workDetails: getWorkshopDetailsById,
+    workApproved: approveWorkshopReducer,
+    workDecline: declineWorkshopReducer,
+    resDetails: getResearchDetailsById,
     resApproved: approveReserchReducer,
     resDecline: declineReserchReducer,
     appWorkshop: workshopReducer,
     resList: reserchReducer,
-    newsDeclined :newsDeclinedReducer
+    newsDeclined: newsDeclinedReducer,
+    workApplist: workshopAppListReducer,
+    researchApplist: researchAppListReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

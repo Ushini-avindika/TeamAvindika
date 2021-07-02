@@ -99,12 +99,18 @@ const Appbar = () => {
                                           <Link to='/researcher'>
                                                 Insert Research Paper
                                           </Link>
+                                          <Link to="/researchApp">
+                                                Approved Research papers
+                                          </Link>
 
                                     </NavDropdown>
                               ) || userInfo && userInfo.isWorkPresnter && (
                                     <NavDropdown className="link" title='Workshop Presenter'>
                                           <Link to='/workshop'>
                                                 Insert Workshop Details
+                                          </Link>
+                                          <Link to='/workApp'>
+                                                Approved Workshop details
                                           </Link>
 
                                     </NavDropdown>
@@ -113,6 +119,7 @@ const Appbar = () => {
                                           <Link to='/reviwerWorkshop'>
                                                 Riviewer
                                           </Link>
+
 
                                     </NavDropdown>
                               ) || userInfo && userInfo.isAtendee && (
