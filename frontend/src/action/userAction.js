@@ -40,7 +40,7 @@ export const logout = () => (dispatch) => {
     dispatch({ type: USER_LOGOUT })
 }
 
-export const register = (name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc) => async (dispatch) => {
+export const register = (name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc, isEditor, isReviwer) => async (dispatch) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST
@@ -52,7 +52,7 @@ export const register = (name, email, password, isReasearcher, isWorkPresnter, i
             }
         }
 
-        const { data } = await axios.post('http://localhost:8040/api/users/', { name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc },
+        const { data } = await axios.post('http://localhost:8040/api/users/', { name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc, isEditor, isReviwer },
             config
         )
 

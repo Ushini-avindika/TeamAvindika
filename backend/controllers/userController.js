@@ -22,6 +22,8 @@ const authUser = asyncHandler(async (req, res) => {
             isReasearcher: user.isReasearcher,
             isWorkPresnter: user.isWorkPresnter,
             isAtendee: user.isAtendee,
+            isEditor: user.isEditor,
+            isReviwer: user.isReviwer,
             token: generateToken(user._id),
         })
     } else {
@@ -49,6 +51,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
             isReasearcher: user.isReasearcher,
             isWorkPresnter: user.isWorkPresnter,
             isAtendee: user.isAtendee,
+            isEditor: user.isEditor,
+            isReviwer: user.isReviwer,
         })
 
     } else {
@@ -63,7 +67,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //@access Public
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc } = req.body
+    const { name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc, isEditor, isReviwer } = req.body
 
     const userExists = await User.findOne({ email })
 
@@ -80,8 +84,9 @@ const registerUser = asyncHandler(async (req, res) => {
         isReasearcher,
         isWorkPresnter,
         isAtendee,
-        insertDoc
-
+        insertDoc,
+        isEditor,
+        isReviwer
     })
 
     if (user) {
@@ -96,6 +101,8 @@ const registerUser = asyncHandler(async (req, res) => {
             isWorkPresnter: user.isWorkPresnter,
             isAtendee: user.isAtendee,
             insertDoc: user.insertDoc,
+            isEditor: user.isEditor,
+            isReviwer: user.isReviwer,
             token: generateToken(user._id),
         })
     } else {
@@ -138,6 +145,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             isWorkPresnter: updateUser.isWorkPresnter,
             isAtendee: updateUser.isAtendee,
             insertDoc: updateUser.insertDoc,
+            isEditor: user.isEditor,
+            isReviwer: user.isReviwer,
             token: generateToken(updateUser._id),
         })
     } else {

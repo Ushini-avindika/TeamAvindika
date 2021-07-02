@@ -18,6 +18,8 @@ const registerScreen = ({ location, history }) => {
       const [confirmPassword, setConfirmPassword] = useState('')
       const [isReasearcher, setisReasearcher] = useState(false)
       const [isWorkPresnter, setisWorkPresnter] = useState(false)
+      const [isEditor, setisEditor] = useState(false)
+      const [isReviwer, setisReviwer] = useState(false)
       const [isAtendee, setisAtendee] = useState(false)
       const [message, setMessage] = useState(null)
       const [insertDoc, setInsertDoc] = useState('')
@@ -45,7 +47,7 @@ const registerScreen = ({ location, history }) => {
                   setMessage('Password do not match')
             }
             else {
-                  dispatch(register(name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc))
+                  dispatch(register(name, email, password, isReasearcher, isWorkPresnter, isAtendee, insertDoc, isEditor, isReviwer))
             }
       }
 
@@ -100,9 +102,12 @@ const registerScreen = ({ location, history }) => {
                                           <div className="form-group bn">
                                                 <Form.Label>User Type</Form.Label>
                                                 <div>
-                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisReasearcher(e.target.value)} /> researcher
-                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisWorkPresnter(e.target.value)} /> Workshop Presenter
-                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisAtendee(e.target.value)} /> Atendee
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisReasearcher(e.target.value)} /> researcher<br />
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisWorkPresnter(e.target.value)} /> Workshop Presenter<br />
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisAtendee(e.target.value)} /> Atendee<br />
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisEditor(e.target.value)} /> Editor<br />
+                                                      <input type="radio" value="true" name="radio" onChange={(e) => setisReviwer(e.target.value)} /> Reviewer<br />
+
                                                 </div>
                                           </div>
                                     </Form.Group>

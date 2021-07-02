@@ -109,7 +109,7 @@ const Appbar = () => {
 
                                     </NavDropdown>
                               ) || userInfo && userInfo.isReviwer && (
-                                    <NavDropdown className="/reviwerWorkshop" title='Riviwer'>
+                                    <NavDropdown className="link" title='Riviewer'>
                                           <Link to='/reviwerWorkshop'>
                                                 Riviewer
                                           </Link>
