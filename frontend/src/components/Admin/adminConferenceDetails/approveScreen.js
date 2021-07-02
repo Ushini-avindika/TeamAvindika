@@ -101,7 +101,7 @@ const ApproveScreen = ({ match }) => {
                                     </ListGroup>
                                     {!conferencedetails.isApproved && (
                                           <ListGroup.Item>
-                                                <Button type='button' className='btn btn-block' onClick={approveHandler}>
+                                                <Button type='button' className='btn btn-block' onClick={approveHandler} variant="success">
                                                       Mark as Approved
                                                 </Button>
                                           </ListGroup.Item>
@@ -109,7 +109,7 @@ const ApproveScreen = ({ match }) => {
 
                                     {conferencedetails.isApproved && (
                                           <ListGroup.Item>
-                                                <Button type='button' className='btn btn-block' onClick={declineHandler} >
+                                                <Button type='button' className='btn btn-block' onClick={declineHandler} variant="danger">
                                                       Decline
                                                 </Button>
                                           </ListGroup.Item>

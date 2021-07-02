@@ -216,7 +216,7 @@ export default function Dashboard() {
                                         </td>
                                         <td>
                                             <LinkContainer to={`/adminNews/${newA._id}`}>
-                                                <Button variant='light' className='btn-sm'>
+                                                <Button variant='light' className='btn-sm' variant="dark">
                                                     Details
                                                 </Button>
                                             </LinkContainer>
