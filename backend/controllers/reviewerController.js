@@ -17,4 +17,56 @@ const getAllResearchDetails = asyncHandler(async (req, res) => {
   })
   
 
-export{ getAllWorkshopDetails, getAllResearchDetails }
+  const getWorkshopById = asyncHandler(async (req, res) => {
+    const reviwerWorkshopDetails = await Workshop.findById(req.params.id)
+
+    if (reviwerWorkshopDetails) {
+          res.json({
+                _id: reviwerWorkshopDetails._id,
+                workshopName: reviwerWorkshopDetails.workshopName,
+                workshopDes: reviwerWorkshopDetails.workshopDes,
+                workTimeFrom: reviwerWorkshopDetails.workTimeFrom,
+                workTimeTo: reviwerWorkshopDetails.workTimeTo,
+                workDate: reviwerWorkshopDetails.workDate,
+                workInsertDoc: reviwerWorkshopDetails.workInsertDoc,
+                createdAt: reviwerWorkshopDetails.createdAt,
+                updatedAt: reviwerWorkshopDetails.updatedAt,
+                workIsApprove: reviwerWorkshopDetails.workIsApprove,          
+          })
+    } else {
+          res.status(404)
+          throw new Error('News not found')
+    }
+})
+
+
+  const updateWorkshopDeatils = asyncHandler(async(req, res) => {
+    const workshop = await Workshop.findById(req.params.id)
+
+    if(workshop) {
+      workshop.workIsApprove = true
+        const updateApprovel = await workshop.save()
+
+        res.json(updateApprovel)
+    }else {
+        res.status(404)
+        throw new Error('Workshop details not found')
+    }
+})
+
+const declineWorkshopDeatils = asyncHandler(async(req, res) => {
+  const workshop = await Workshop.findById(req.params.id)
+
+  if(workshop) {
+    workshop.workIsApprove = false
+      const declineApprovel = await workshop.save()
+
+      res.json(declineApprovel)
+  }else {
+      res.status(404)
+      throw new Error('Workshop not found')
+  }
+})
+
+
+export{ getAllWorkshopDetails, getAllResearchDetails, updateWorkshopDeatils, getWorkshopById, declineWorkshopDeatils }
