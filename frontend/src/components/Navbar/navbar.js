@@ -81,14 +81,14 @@ const Appbar = () => {
 
 
                               {userInfo && userInfo.isEditor && (
-                                    <NavDropdown className="link" title='Editor'>
+                                    <NavDropdown className="link" title='Editor Dashboard'>
                                           <Link to="/editorLanding">
                                                 editor
                                           </Link>
 
                                     </NavDropdown>
                               ) || userInfo && userInfo.isAdmin && (
-                                    <NavDropdown className="link" title='Admin'>
+                                    <NavDropdown className="link" title='Admin  Dashboard'>
                                           <Link to='/admincon'>
                                                 Admin
                                           </Link>
