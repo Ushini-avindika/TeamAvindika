@@ -31,6 +31,7 @@ import ReasearcherDetails from './Screens/ReviwerScreen/ResercherDetails/reviwer
 import WorkshopsApprove from './Screens/ReviwerScreen/WorkshopDetails/WorkshopsApproveScreen.js'
 import ReserchApprove from './Screens/ReviwerScreen/ResercherDetails/researchApproveScreen.js'
 import AdminWorkshop from './components/Admin/adminWorkshopList/adminWorkshopList.js'
+import AdminReserch from './components/Admin/adminResercher/adminResercherList.js'
 
 const App = () => {
       return (
@@ -66,6 +67,7 @@ const App = () => {
                         <Route path="/workshopDetails/:id" component={WorkshopsApprove} />
                         <Route path="/reserch/:id" component={ReserchApprove} />
                         <Route path="/adminWorkshops" component={AdminWorkshop} />
+                        <Route path="/adminReserch" component={AdminReserch} />
                   </div>
             </Router >
       )

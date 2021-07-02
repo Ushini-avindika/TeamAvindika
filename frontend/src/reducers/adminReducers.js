@@ -35,8 +35,11 @@ import {
     WORKSHOP_LIST_REQUEST_ADMIN,
     WORKSHOP_LIST_SUCCESS_ADMIN,
     WORKSHOP_LIST_FAIL_ADMIN,
-    WORKSHOP_LIST_RESET_ADMIN
-    
+    WORKSHOP_LIST_RESET_ADMIN,
+    RESERCH_LIST_REQUEST_ADMIN,
+    RESERCH_LIST_SUCCESS_ADMIN,
+    RESERCH_LIST_FAIL_ADMIN,
+    RESERCH_LIST_RESET_ADMIN
 
  
 } from '../constants/adminConstants'
@@ -195,8 +198,25 @@ export const workshopReducer = (state = { workshops: [] }, action) => {
   
       }
   }
+
+  export const reserchReducer = (state = { reserchs: [] }, action) => {
+      switch (action.type) {
+            case RESERCH_LIST_REQUEST_ADMIN:
+                  return { loading: true }
+            case RESERCH_LIST_SUCCESS_ADMIN:
+                  return { loading: false, reserchs: action.payload }
+            case RESERCH_LIST_FAIL_ADMIN:
+                  return { loading: false, error: action.payload }
+            case RESERCH_LIST_RESET_ADMIN:
+                  return {}
+            default:
+                  return state
+  
+      }
+  }
   
 
 
 
 
+  

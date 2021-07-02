@@ -32,24 +32,6 @@ export const mainListItems = (
     </ListItem>
 </Link>
 
-  <Link to="/adminEditors">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-        </ListItemIcon>
-      <ListItemText primary="Editors List" />
-    </ListItem>
-  </Link>
-
-  <Link to="/adminReviwer">
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-        </ListItemIcon>
-      <ListItemText primary="Reviwers List" />
-    </ListItem>
-  </Link>
-
   <Link to="/newsAdmin">
     <ListItem button>
       <ListItemIcon>
@@ -65,6 +47,33 @@ export const mainListItems = (
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Workshops" />
+    </ListItem>
+  </Link>
+
+  <Link to="/adminReserch">
+    <ListItem button>
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Reserch List" />
+    </ListItem>
+  </Link>
+
+  <Link to="/adminEditors">
+    <ListItem button>
+      <ListItemIcon>
+        <BarChartIcon />
+        </ListItemIcon>
+      <ListItemText primary="Editors List" />
+    </ListItem>
+  </Link>
+
+  <Link to="/adminReviwer">
+    <ListItem button>
+      <ListItemIcon>
+        <BarChartIcon />
+        </ListItemIcon>
+      <ListItemText primary="Reviwers List" />
     </ListItem>
   </Link>
 

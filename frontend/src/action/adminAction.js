@@ -29,7 +29,10 @@ import {
       ADMIN_APPROVED_NEWS_FAIL,
       WORKSHOP_LIST_REQUEST_ADMIN,
       WORKSHOP_LIST_SUCCESS_ADMIN,
-      WORKSHOP_LIST_FAIL_ADMIN
+      WORKSHOP_LIST_FAIL_ADMIN,
+      RESERCH_LIST_REQUEST_ADMIN,
+      RESERCH_LIST_SUCCESS_ADMIN,
+      RESERCH_LIST_FAIL_ADMIN
 
       
 } from '../constants/adminConstants.js'
@@ -364,3 +367,38 @@ export const AdminWorkshopList = () => async (dispatch, getState) => {
             })
       }
 }
+
+export const AdminReserchList = () => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: RESERCH_LIST_REQUEST_ADMIN,
+            })
+
+            const {
+                  userLogin: { userInfo },
+            } = getState()
+
+            const config = {
+                  headers: {
+                        Authorization: `Bearer ${userInfo.token}`,
+                  }
+            }
+
+            const { data } = await axios.get('http://localhost:8040/api/reviewdetails/research', config)
+
+            dispatch({
+                  type: RESERCH_LIST_SUCCESS_ADMIN,
+                  payload: data
+            })
+      } catch (error) {
+            dispatch({
+                  type: RESERCH_LIST_FAIL_ADMIN,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+
