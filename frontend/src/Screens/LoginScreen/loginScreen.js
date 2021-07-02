@@ -75,7 +75,7 @@ const Loginscreen = ({ location, history }) => {
                                     </Row>
 
 
-                                    <Button type="submit" className="btn btn-primary btn-block">Submit</Button>
+                                    <Button type="submit" className="btn btn-primary btn-block">Log In</Button>
 
                               </Form>
                         </div>

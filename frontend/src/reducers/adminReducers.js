@@ -39,7 +39,11 @@ import {
     RESERCH_LIST_REQUEST_ADMIN,
     RESERCH_LIST_SUCCESS_ADMIN,
     RESERCH_LIST_FAIL_ADMIN,
-    RESERCH_LIST_RESET_ADMIN
+    RESERCH_LIST_RESET_ADMIN,
+    ADMIN_NEWS_DECLINE_REQUEST,
+    ADMIN_NEWS_DECLINE_SUCCESS,
+    ADMIN_NEWS_DECLINE_FAIL,
+    ADMIN_NEWS_DECLINE_RESET
 
  
 } from '../constants/adminConstants'
@@ -214,8 +218,23 @@ export const workshopReducer = (state = { workshops: [] }, action) => {
   
       }
   }
-  
 
+  
+  export const newsDeclinedReducer = (state = {news: {}} , action) => {
+      switch (action.type) {
+          case ADMIN_NEWS_DECLINE_REQUEST:
+                  return { loading: true }
+          case ADMIN_NEWS_DECLINE_SUCCESS:
+                return { loading: false, success: true }
+          case ADMIN_NEWS_DECLINE_FAIL:
+                return { loading: false, error: action.payload}
+          default:
+                return state
+      }
+}
+
+  
+  
 
 
 

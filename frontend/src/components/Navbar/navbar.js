@@ -115,6 +115,13 @@ const Appbar = () => {
                                           </Link>
 
                                     </NavDropdown>
+                              ) || userInfo && userInfo.isAtendee && (
+                                    <NavDropdown className="link" title='Atendee'>
+                                          <Link to='/atendee'>
+                                                Pay UpFront
+                                          </Link>
+
+                                    </NavDropdown>
                               )
 
                               }

@@ -5,8 +5,8 @@ import { Row, Col, ListGroup, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../../components/Message/message'
 import Loader from '../../../components/Loader/loader'
-import { getNewsById, approveNews } from '../../../action/adminAction.js'
-import { ADMIN_APPROVED_NEWS_RESET } from '../../../constants/adminConstants.js'
+import { getNewsById, approveNews, declineNews } from '../../../action/adminAction.js'
+import { ADMIN_APPROVED_NEWS_RESET, ADMIN_NEWS_DECLINE_RESET } from '../../../constants/adminConstants.js'
 import Badge from 'react-bootstrap/Badge'
 import FromContainer from '../../FormContainer/formContainer.js'
 
@@ -22,17 +22,26 @@ const ApproveScreen = ({ match }) => {
       newsApproved = useSelector((state) => state.newsApproved)
       const { loading: loadingApprovel, success: successApprove } = newsApproved
 
+      newsDeclined = useSelector((state) => state.newsDeclined)
+      const { loading: loadingDecline, success: declineApprove } = newsDeclined
+
+
 
       useEffect(() => {
 
-            if (news || successApprove) {
+            if (news || successApprove || declineApprove) {
+                  dispatch({ type: ADMIN_NEWS_DECLINE_RESET })
                   dispatch({ type: ADMIN_APPROVED_NEWS_RESET })
                   dispatch(getNewsById(newsId))
             }
-      }, [dispatch, successApprove])
+      }, [dispatch, successApprove, declineApprove])
 
       const approveHandler = () => {
             dispatch(approveNews(news))
+      }
+      
+      const declineHandler = () => {
+            dispatch(declineNews(news))
       }
 
       return loading ? (
@@ -79,8 +88,16 @@ const ApproveScreen = ({ match }) => {
                                     </ListGroup>
                                     {!news.isApproved && (
                                           <ListGroup.Item>
-                                                <Button type='button' className='btn btn-block' onClick={approveHandler}>
+                                                <Button type='button' className='btn btn-block' onClick={approveHandler} variant="success">
                                                       Mark as Approved
+                                                </Button>
+                                          </ListGroup.Item>
+                                    )}
+
+                                    {news.isApproved && (
+                                          <ListGroup.Item>
+                                                <Button type='button' className='btn btn-block' onClick={declineHandler} variant="danger">
+                                                     Decline
                                                 </Button>
                                           </ListGroup.Item>
                                     )}

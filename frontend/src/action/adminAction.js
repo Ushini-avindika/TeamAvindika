@@ -32,7 +32,10 @@ import {
       WORKSHOP_LIST_FAIL_ADMIN,
       RESERCH_LIST_REQUEST_ADMIN,
       RESERCH_LIST_SUCCESS_ADMIN,
-      RESERCH_LIST_FAIL_ADMIN
+      RESERCH_LIST_FAIL_ADMIN,
+      ADMIN_NEWS_DECLINE_REQUEST,
+      ADMIN_NEWS_DECLINE_SUCCESS,
+      ADMIN_NEWS_DECLINE_FAIL
 
       
 } from '../constants/adminConstants.js'
@@ -400,5 +403,42 @@ export const AdminReserchList = () => async (dispatch, getState) => {
             })
       }
 }
+
+
+export const declineNews = (news) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: ADMIN_NEWS_DECLINE_REQUEST,
+            })
+
+            const {
+                  userLogin: { userInfo },
+            } = getState()
+
+            const config = {
+                  headers: {
+                        Authorization: `Bearer ${userInfo.token}`,
+                  },
+            }
+
+            const { data } = await axios.put(`http://localhost:8040/api/admin/news/${news._id}/declined`, news, config)
+
+            dispatch({
+                  type: ADMIN_NEWS_DECLINE_SUCCESS,
+                  payload: data,
+            })
+      } catch (error) {
+            dispatch({
+                  type: ADMIN_NEWS_DECLINE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+
+
 
 
