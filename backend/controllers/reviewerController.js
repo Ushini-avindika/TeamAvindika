@@ -87,5 +87,33 @@ const getReasearchById = asyncHandler(async (req, res) => {
   }
 })
 
+const updateReserchDeatils = asyncHandler(async(req, res) => {
+  const reserch = await Researcher.findById(req.params.id)
 
-export{ getAllWorkshopDetails, getAllResearchDetails, updateWorkshopDeatils, getWorkshopById, declineWorkshopDeatils, getReasearchById }
+  if(reserch) {
+    reserch.researchIsApproved = true
+      const updateApprovel = await reserch.save()
+
+      res.json(updateApprovel)
+  }else {
+      res.status(404)
+      throw new Error('Workshop details not found')
+  }
+})
+
+const declineReserchDeatils = asyncHandler(async(req, res) => {
+const reserch = await Researcher.findById(req.params.id)
+
+if(reserch) {
+  reserch.researchIsApproved = false
+    const declineApprovel = await reserch.save()
+
+    res.json(declineApprovel)
+}else {
+    res.status(404)
+    throw new Error('Workshop not found')
+}
+})
+
+
+export{ getAllWorkshopDetails, getAllResearchDetails, updateWorkshopDeatils, getWorkshopById, declineWorkshopDeatils, getReasearchById, updateReserchDeatils, declineReserchDeatils }
