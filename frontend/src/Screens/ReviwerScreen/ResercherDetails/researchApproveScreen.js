@@ -5,42 +5,46 @@ import { Row, Col, ListGroup, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../../components/Message/message'
 import Loader from '../../../components/Loader/loader'
-import { getConferenceDetailsById, approveConference, declineConference } from '../../../action/adminAction.js'
-import { ADMIN_APPROVED_RESET, ADMIN_DECLINE_RESET } from '../../../constants/adminConstants.js'
+import {getResearcherById, approveReserach, declineReserch} from '../../../action/reviwerAction.js'
+import { REVIWER_APPROVE_RESERCH_RESET, REVIWER_DECLINE_RESERCH_RESET } from '../../../constants/reviwerConstants.js'
 
-const ApproveScreen = ({ match }) => {
-      const confId = match.params.id
+
+const researcherApproveScreen = ({ match }) => {
+      const resId = match.params.id
 
 
       const dispatch = useDispatch()
 
-      const cDetails = useSelector((state) => state.cDetails)
-      const { conferencedetails, loading, error } = cDetails
+      const resDetails = useSelector((state) => state.resDetails)
+      const { reserchers, loading, error } = resDetails
 
-      confApproved = useSelector((state) => state.confApproved)
-      const { loading: loadingApprovel, success: successApprove } = confApproved
+      resApproved = useSelector((state) => state.resApproved)
+      const { loading: loadingApprovel, success: successApprove } = resApproved
 
-      confDecline = useSelector((state) => state.confDecline)
-      const { loading: loadingDecline, success: successDecline } = confDecline
+      resDecline = useSelector((state) => state.resDecline)
+      const { loading: loadingDecline, success: successDecline } = resDecline
+
 
 
 
       useEffect(() => {
 
-            if (conferencedetails || successApprove || successDecline) {
-                  dispatch({type:ADMIN_DECLINE_RESET})
-                  dispatch({ type: ADMIN_APPROVED_RESET })
-                  dispatch(getConferenceDetailsById(confId))
+            if (reserchers || successApprove || successDecline) {
+                  dispatch({ type: REVIWER_DECLINE_RESERCH_RESET })
+                  dispatch({ type: REVIWER_APPROVE_RESERCH_RESET })
+                  dispatch(getResearcherById(resId))
             }
-      }, [dispatch, successApprove, successDecline])
+      }, [dispatch, successDecline, successApprove])
 
       const approveHandler = () => {
-            dispatch(approveConference(conferencedetails))
+            dispatch(approveReserach(reserchers))
       }
 
       const declineHandler = () => {
-            dispatch(declineConference(conferencedetails))
+            dispatch(declineReserch(reserchers))
       }
+
+
 
 
       return loading ? (
@@ -49,39 +53,36 @@ const ApproveScreen = ({ match }) => {
             <Message variant='danger'>{error}</Message>
       ) : (
             <>
-             <Link to='/adminCon' className='btn btn-light my-3'>
+             <Link to='/reviwerResearch' className='btn btn-light my-3'>
                         Go Back
                   </Link>
-                  <h1>Conference {conferencedetails.conname}</h1>
+                  <h1>Researcher {reserchers._id}</h1>
                   <Row>
                         <Col md={8}>
                               <ListGroup variant='flush'>
                                     <ListGroup.Item>
                                           <p>
-                                                <strong>Name: </strong> {conferencedetails.conname}
+                                                <strong>Paper: </strong> {reserchers.researcherPaper}
                                           </p>
 
                                           <p>
-                                                <strong>Organizer:</strong>
-                                                {conferencedetails.organizer}
-                                          </p>
-                                          <p>
                                                 <strong>Description:</strong>
-                                                {conferencedetails.description}
+                                                {reserchers.researcherDes}
                                           </p>
                                           <p>
-                                                <strong>Start Date:</strong>
-                                                {conferencedetails.startDate}
+                                                <strong>Document:</strong>
+                                                {reserchers.researchInsertDoc}
                                           </p>
                                           <p>
-                                                <strong>End Date:</strong>
-                                                {conferencedetails.endDate}
+                                                <strong>Created At:</strong>
+                                                {reserchers.createdAt}
                                           </p>
                                           <p>
-                                                <strong>Venue:</strong>
-                                                {conferencedetails.venue}
+                                                <strong>Updated At:</strong>
+                                                {reserchers.updatedAt}
                                           </p>
-                                          {conferencedetails.isApproved ? (
+                                        
+                                          {reserchers.researchIsApproved ? (
                                                 <Message variant='success'>
                                                       Approved
                                                 </Message>
@@ -92,7 +93,7 @@ const ApproveScreen = ({ match }) => {
 
 
                               </ListGroup>
-                              {!conferencedetails.isApproved && (
+                              {!reserchers.researchIsApproved && (
                                     <ListGroup.Item>
                                           <Button type='button' className='btn btn-block' onClick={approveHandler}>
                                                 Mark as Approved
@@ -100,7 +101,7 @@ const ApproveScreen = ({ match }) => {
                                     </ListGroup.Item>
                               )}
 
-                              {conferencedetails.isApproved && (
+                              {reserchers.researchIsApproved && (
                                     <ListGroup.Item>
                                           <Button type='button' className='btn btn-block' onClick={declineHandler} >
                                                 Decline
@@ -108,12 +109,10 @@ const ApproveScreen = ({ match }) => {
                                     </ListGroup.Item>
                               )}
 
-
-
                         </Col>
                   </Row>
             </>
       )
 }
 
-export default ApproveScreen
+export default researcherApproveScreen

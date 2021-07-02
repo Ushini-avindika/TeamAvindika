@@ -26,8 +26,8 @@ export const mainListItems = (
   <Link to="/adminCon">
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
+        <BarChartIcon />
+        </ListItemIcon>
       <ListItemText primary="Conference Detalis" />
     </ListItem>
 </Link>
@@ -35,8 +35,8 @@ export const mainListItems = (
   <Link to="/adminEditors">
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
+        <BarChartIcon />
+        </ListItemIcon>
       <ListItemText primary="Editors List" />
     </ListItem>
   </Link>
@@ -45,7 +45,7 @@ export const mainListItems = (
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
-      </ListItemIcon>
+        </ListItemIcon>
       <ListItemText primary="Reviwers List" />
     </ListItem>
   </Link>

@@ -22,12 +22,14 @@ import AdminApproveScreen from './components/Admin/adminConferenceDetails/approv
 import conferenceDetails from './Screens/ConferenceDetails/conferenceDetails.js'
 import AdminNewsDetails from './components/Admin/adminNewsDetails/adminNewsDetails.js'
 import AdminNewsApprove from './components/Admin/adminNewsDetails/adminNewsApprove.js'
-import WorkshopList from './Screens/ReviwerScreen/reviewerdashboard/reviewerdashboard.js'
 import AppNewsScreen from './Screens/EditorScreen/Editor dashboard/appNewsScreen.js'
-import Reasearcher from './Screens/ReviwerScreen/reviewerdashboard/reviwerResearch.js'
 import ViewNewsScreen from './Screens/ViewNewsScreen/viewNewsScreen.js'
 import UnAppNewsScreen from './Screens/EditorScreen/Editor dashboard/unappNewsScreen.js'
 import EditorLanding from './Screens/EditorScreen/Editor dashboard/editorLandingScreen.js'
+import WorkshopList from './Screens/ReviwerScreen/WorkshopDetails/reviewerWorkshopDetails.js'
+import ReasearcherDetails from './Screens/ReviwerScreen/ResercherDetails/reviwerResearch.js'
+import WorkshopsApprove from './Screens/ReviwerScreen/WorkshopDetails/WorkshopsApproveScreen.js'
+import ReserchApprove from './Screens/ReviwerScreen/ResercherDetails/researchApproveScreen.js'
 
 const App = () => {
       return (
@@ -51,17 +53,17 @@ const App = () => {
                         <Route path="/newslist" component={newsListScreen} />
                         <Route path='/news/:id' component={NewsEditScreen} />
                         <Route path="/conference" component={conferenceDetails} />
-                        <Route path="/newsAdmin" component={AdminNewsDetails} />
-                        <Route path="/newsAdmin" component={AdminNewsDetails} />
                         <Route path="/profile" component={profileScreen} />
                         <Route path="/newsAdmin" component={AdminNewsDetails} />
                         <Route path="/adminNews/:id" component={AdminNewsApprove} />
-                        <Route path="/reviwer" component={WorkshopList} />
-                        <Route path="/research" component={Reasearcher} />
+                        <Route path="/reviwerWorkshop" component={WorkshopList} />
+                        <Route path="/reviwerResearch" component={ReasearcherDetails} />
                         <Route path="/view/:id" component={ViewNewsScreen} />
                         <Route path="/appNews" component={AppNewsScreen} />
                         <Route path="/editorLanding" component={EditorLanding} />
                         <Route path="/unappNews" component={UnAppNewsScreen} />
+                        <Route path="/workshopDetails/:id" component={WorkshopsApprove} />
+                        <Route path="/reserch/:id" component={ReserchApprove} />
                   </div>
             </Router >
       )
