@@ -34,10 +34,6 @@ app.use((req, res, next) => {
 
 
 
-app.get('/', (req, res) => {
-    res.send('API running...')
-})
-
 //calling routes
 app.use('/api/conDetails', conferenceRoutes)
 app.use('/api/users', userRoutes)
@@ -51,6 +47,19 @@ app.use('/api/news', newsRoutes)
 
 const __dirname = path.resolve()
 app.use('/documents', express.static(path.join(__dirname, '/documents')))
+
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'frontend/dist')))
+
+    app.get('*', (req,res)=> res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')))
+}else{
+    app.get('/', (req, res) => {
+    res.send('API running...')
+})}
+
+
+
 
 const PORT = process.env.PORT || 8040
 
