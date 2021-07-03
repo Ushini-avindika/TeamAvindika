@@ -31,7 +31,7 @@ export const listAllNews = () => async (dispatch) => {
                   type: NEWS_LIST_REQUEST,
             })
 
-            const { data } = await axios.get('http://localhost:8040/api/news/allNews')
+            const { data } = await axios.get('https://aficacapp.herokuapp.com/allNews')
             dispatch({
                   type: NEWS_LIST_SUCCESS,
                   payload: data
