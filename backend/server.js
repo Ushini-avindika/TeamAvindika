@@ -34,8 +34,11 @@ app.use((req, res, next) => {
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 066c3b62feaa38d59aa28f19d3ab35f3e95da148
 //calling routes
 app.use('/api/conDetails', conferenceRoutes)
 app.use('/api/users', userRoutes)
@@ -53,6 +56,7 @@ const __dirname = path.resolve()
 app.use('/documents', express.static(path.join(__dirname, '/documents')))
 
 
+<<<<<<< HEAD
 if (process.env.NODE_ENV == 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/dist')))
 
@@ -62,6 +66,19 @@ if (process.env.NODE_ENV == 'production') {
         res.send('API running...')
     })
 }
+=======
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'frontend/dist')))
+
+    app.get('*', (req,res)=> res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')))
+}else{
+    app.get('/', (req, res) => {
+    res.send('API running...')
+})}
+
+
+
+>>>>>>> 066c3b62feaa38d59aa28f19d3ab35f3e95da148
 
 const PORT = process.env.PORT || 8040
 
