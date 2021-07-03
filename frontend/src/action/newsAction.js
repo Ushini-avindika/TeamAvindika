@@ -173,7 +173,7 @@ export const listAppNews = () => async (dispatch) => {
 
 
 
-            const { data } = await axios.get('http://localhost:8040/api/news/appNews')
+            const { data } = await axios.get('localhost:8040/api/news/appNews')
             dispatch({
                   type: NEWS_APPROVED_LIST_SUCCESS,
                   payload: data
