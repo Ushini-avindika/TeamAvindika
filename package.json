@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node server.js",
     "data:import": "node backend/seeder",
     "data:destory": "node backend/seeder -d",
     "server": "nodemon backend/server",
